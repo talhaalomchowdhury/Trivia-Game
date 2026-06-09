@@ -1,3 +1,39 @@
+// ================= PHASE 3: DATA & STATE =================
+const questions = [
+  {
+    text: "Who invented the World Wide Web?",
+    answers: ["Tim Berners-Lee", "Bill Gates", "Linus Torvalds", "Ada Lovelace"],
+    correct: 0
+  },
+  {
+    text: "Which programming language is known as the 'backbone of web development'?",
+    answers: ["Python", "C++", "JavaScript", "SQL"],
+    correct: 2
+  },
+  {
+    text: "What does DOM stand for in web development?",
+    answers: ["Data Object Model", "Document Object Model", "Digital Order Management", "Document Operation Matrix"],
+    correct: 1
+  },
+  {
+    text: "Which HTML element is used to link an external JavaScript file?",
+    answers: ["<link>", "<script>", "<js>", "<javascript>"],
+    correct: 1
+  },
+  {
+    text: "What does CSS stand for?",
+    answers: ["Creative Style Sheets", "Computer Style Sheets", "Cascading Style Sheets", "Colorful Style Sheets"],
+    correct: 2
+  }
+];
+
+let currentIndex = 0;
+let score = 0;
+function loadQuestion(index) {
+  // 1. Get the current question object out of the questions array using index
+  const currentQuestion = questions[index];
+}
+
 const gameTitle = document.getElementById("game-title")
 const scoreDisplay = document.getElementById("score")
 const questionNumber = document.getElementById("question-number")
