@@ -117,6 +117,7 @@ nextBtn.addEventListener("click", () => {
 function showEndScreen() {
   // 1. Hide the question card layout
   questionCard.classList.add("hidden");
+  nextBtn.classList.add("hidden");
 
   // 2. Reveal the end screen container container
   endScreen.classList.remove("hidden");

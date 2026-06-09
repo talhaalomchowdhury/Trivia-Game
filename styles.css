@@ -1,31 +1,203 @@
+/* ================= GLOBAL STYLES ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
 
-/* Applied to the button the player clicked — correct answer */
+body {
+    /* Deep space/gaming dark background with a subtle radial glow */
+    background: radial-gradient(circle at center, #f0f0f4 0%, #000004 100%);
+    color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#game {
+    width: 100%;
+    max-width: 550px;
+    /* Sleek semi-transparent dark pane */
+    background: rgba(1, 1, 9, 0.8);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ================= HEADER STYLES ================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+#game-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+#score-display {
+    font-size: 15px;
+    font-weight: 700;
+    /* Cyberpunk neon blue highlight badge */
+    background-color: rgba(0, 123, 255, 0.2);
+    color: #f8fef9;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+/* ================= QUESTION CARD ================= */
+#question-card {
+    margin-bottom: 24px;
+    border-left: 5px solid transparent;
+    transition: all 0.2s ease;
+    padding-left: 0;
+}
+
+#question-number {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a5a5b5;
+    margin-bottom: 8px;
+}
+
+#question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+/* ================= ANSWER LIST & BUTTONS ================= */
+#answer-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+#answer-list li {
+    margin-bottom: 12px;
+}
+
+.answer-btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.03);
+    color: #cdd6f4;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.answer-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* ================= NEXT BUTTON ================= */
+#next-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #089b23;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+#next-btn:hover {
+    background-color: #0056b3;
+}
+
+#next-btn:active {
+    transform: scale(0.98);
+}
+
+/* ================= END SCREEN ================= */
+#end-screen {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#end-screen h2 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+#end-screen p {
+    font-size: 16px;
+    color: #a5a5b5;
+    margin-bottom: 24px;
+}
+
+#restart-btn {
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+#restart-btn:hover {
+    background-color: #218838;
+}
+
+/* ================= WORKSHOP STATE CLASSES ================= */
 .correct {
-    background-color: #4caf50;
-    color: white;
-    border-color: #388e3c;
+    background-color: #2e7d32 !important;
+    color: #ffffff !important;
+    border-color: #4caf50 !important;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.2);
 }
 
-/* Applied to the button the player clicked — wrong answer */
 .wrong {
-    background-color: #e53935;
-    color: white;
-    border-color: #c62828;
+    background-color: #c62828 !important;
+    color: #ffffff !important;
+    border-color: #ef5350 !important;
+    box-shadow: 0 0 12px rgba(239, 83, 80, 0.2);
 }
 
-/* Applied to all answer buttons after a choice is made */
 .disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     pointer-events: none;
     cursor: default;
 }
 
-/* Applied to #question-card after an answer is locked in */
 .answered {
-    border-left: 4px solid #90a4ae;
+    /* Indicator border turns a crisp slate white upon submission */
+    border-left: 5px solid #a5a5b5;
+    padding-left: 15px;
 }
 
-/* Hides an element — used on next-btn and end-screen initially */
 .hidden {
-    display: none;
+    display: none !important;
 }
