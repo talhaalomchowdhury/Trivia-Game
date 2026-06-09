@@ -146,6 +146,33 @@ function showEndScreen() {
   endScreen.appendChild(restartBtn);
 }
 
+// ================= PHASE 6: RESTART GAME =================
+
+endScreen.addEventListener("click", (event) => {
+  // 1. Safety Guard: Return early if the clicked element is not the restart button
+  if (event.target.id !== "restart-btn") return;
+
+  // 2. Reset both game state tracking variables to 0
+  currentIndex = 0;
+  score = 0;
+  
+  // Update the score tracker in the header back to 0
+  scoreDisplay.textContent = score;
+
+  // 3. Clear out everything showEndScreen dynamically built in Phase 5
+  endScreen.innerHTML = "";
+
+  // 4. Hide the end screen and bring the question card layout back
+  endScreen.classList.add("hidden");
+  questionCard.classList.remove("hidden");
+
+  // 5. Load the first question to start fresh!
+  loadQuestion(currentIndex);
+});
+
+// Think about it: Why can't we just do document.getElementById("restart-btn") at the top of the file?
+// Answer: Because when the script first loads, the "Play Again" button doesn't exist in the HTML yet. It is created out of thin air only when showEndScreen() runs!
+
 // getElementsByClassName returns an HTMLCollection.
 // querySelectorAll returns a NodeList.
 // To use .map() on either, convert with Array.from().
