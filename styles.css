@@ -1,0 +1,30 @@
+/* Applied to the button the player clicked — correct answer */
+.correct {
+    background-color: #4caf50;
+    color: white;
+    border-color: #388e3c;
+}
+
+/* Applied to the button the player clicked — wrong answer */
+.wrong {
+    background-color: #e53935;
+    color: white;
+    border-color: #c62828;
+}
+
+/* Applied to all answer buttons after a choice is made */
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Applied to #question-card after an answer is locked in */
+.answered {
+    border-left: 4px solid #90a4ae;
+}
+
+/* Hides an element — used on next-btn and end-screen initially */
+.hidden {
+    display: none;
+}
