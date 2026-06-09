@@ -97,6 +97,55 @@ answerList.addEventListener("click", (event) => {
     nextBtn.classList.remove("hidden");
 });
 
+// ================= PHASE 5: NEXT QUESTION FLOW =================
+
+nextBtn.addEventListener("click", () => {
+  // 1. Move to the next question index
+  currentIndex++;
+
+  // 2. If there are more questions left, load the next one
+  if (currentIndex < questions.length) {
+    loadQuestion(currentIndex);
+  } else {
+    // 3. Otherwise, the game is over! Show the results screen
+    showEndScreen();
+  }
+});
+
+// ================= PHASE 5: DYNAMIC END SCREEN =================
+
+function showEndScreen() {
+  // 1. Hide the question card layout
+  questionCard.classList.add("hidden");
+
+  // 2. Reveal the end screen container container
+  endScreen.classList.remove("hidden");
+
+  // 3. Create a heading to display the final score results
+  const scoreHeading = document.createElement("h2");
+  scoreHeading.textContent = `You scored ${score} out of ${questions.length}!`;
+
+  // 4. Create a paragraph node for a tailored message based on performance
+  const messageParagraph = document.createElement("p");
+  if (score === questions.length) {
+    messageParagraph.textContent = "🏆 Perfect score! You're a web development master!";
+  } else if (score >= 3) {
+    messageParagraph.textContent = "🎉 Great job! You really know your stuff.";
+  } else {
+    messageParagraph.textContent = "📚 Good try! Review the concepts and try again.";
+  }
+
+  // 5. Create the restart button
+  const restartBtn = document.createElement("button");
+  restartBtn.id = "restart-btn";
+  restartBtn.textContent = "Play Again";
+
+  // 6. Append all three newly created memory elements onto the live DOM screen
+  endScreen.appendChild(scoreHeading);
+  endScreen.appendChild(messageParagraph);
+  endScreen.appendChild(restartBtn);
+}
+
 // getElementsByClassName returns an HTMLCollection.
 // querySelectorAll returns a NodeList.
 // To use .map() on either, convert with Array.from().
